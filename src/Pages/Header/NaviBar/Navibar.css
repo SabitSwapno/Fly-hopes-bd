@@ -1,0 +1,16 @@
+.positioning {
+    position: absolute;
+    top: 25px;
+    left: 100px;
+}
+.directions {
+    text-align: end;
+}
+
+@media only screen and (max-width: 688px) {
+    .positioning {
+        top: 0;
+        left: 0;
+        position: relative;
+    }
+}

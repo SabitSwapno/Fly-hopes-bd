@@ -1,0 +1,12 @@
+.cus-position {
+    position: absolute;
+    top: 60;
+}
+.borders {
+    border: 1px solid gainsboro;
+    margin-bottom: 10px
+}
+.background-pic {
+    background-image: url(https://i.ibb.co/VMPqs2V/beautiful-tropical-beach-sea-sand-with-coconut-palm-tree-blue-sky-white-cloud-2.jpg);
+    background-attachment: fixed;
+}
