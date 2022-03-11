@@ -5,28 +5,26 @@ import { Table } from 'react-bootstrap';
 
 const MyBookings = () => {
 
-    const [data, setData] = useState([]);
+    const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
         fetch('https://eerie-shadow-39034.herokuapp.com/orders')
             .then(res => res.json())
-            .then(data => setData(data))
+            .then(data => setBookings(data))
     }, [])
 
     const handleDeleteUser = id => {
-        const confirmation = window.confirm('Are you sure, you want to delete?');
-        if (confirmation) {
-            const url = `https://eerie-shadow-39034.herokuapp.com/orders/${id}`;
-            fetch(url, {
-                method: 'DELETE'
+        const url = `https://eerie-shadow-39034.herokuapp.com/orders/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                alert("are you sure you want to delete?")
+                const remainigItems = bookings.filter(book => book._id !== id)
+                setBookings(remainigItems);
             })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('deleted successfully');
-                    }
-                })
-        }
+
     }
 
     return (
@@ -35,7 +33,7 @@ const MyBookings = () => {
             <div className="py-5">
                 <h2>My Orders</h2>
                 {
-                    data.map(data => <div
+                    bookings.map(data => <div
                         key={data._id}
                         data={data}
                     >
